@@ -19,3 +19,4 @@ ls_final = sorted(list(set(ls)))
 dic = {ls_final[i] : i for i in range(len(ls_final))} #Comprehension 참조
 for i in ls:
     print(dic[i], end =" ") #이 부분이 아직은 좀 이해가 안됨.
+
