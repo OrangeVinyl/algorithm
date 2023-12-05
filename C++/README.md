@@ -1,3 +1,35 @@
 # C++ 알고리즘 팁
 ---
-C++을 사용하고 있고 `cin/cout`을 사용하고자 한다면, `cin.tie(NULL)`과 `sync_with_stdio(false)`를 둘 다 적용해 주고, `endl` 대신 개행문자(\n)를 쓰자. 단, 이렇게 하면 더 이상 scanf/printf/puts/getchar/putchar 등 C의 입출력 방식을 사용하면 안 된다.
+C++을 사용하고 있고 `cin/cout`을 사용하고자 한다면, 
+```
+ios_base::sync_with_stdio(false);
+cin.tie(NULL);
+cout.tie(NULL);
+```
+를 둘 다 적용해 주고, `endl` 대신 개행문자(`\n`)를 쓰자. 
+단, 이렇게 하면 더 이상 `scanf/printf/puts/getchar/putchar` 등 C의 입출력 방식을 사용하면 안 된다.
+
+### ios_base::sync_with_stdio(false)
+💡 C의 stdio와 C++의 iostream의 동기화를 비활성화 한다 (즉, 평소엔 서로 동기화 상태)
+
+기본적으로 C++와 C의 표준 스트림은 동기화되어있다. 즉, C++에서 C와 C++ 각각의 스타일로 입출력을 받아도 서로 동기화해 우리가 입력/출력하고자 하는 순서대로 결과를 얻을 수 있다. C와 C++가 동일한 버퍼를 공유한다는 것이다.
+
+단, 이 경우 iostream과 stdio의 버퍼를 모두 사용하여 딜레이가 발생한다(성능저하)
+대신, 두 스트림이 동기화하여 입출력에 있어 C와 C++의 IO(Input/Output)을 혼용해 쓸 경우 합리적이고, 스레드(thread)로부터 안전하다.
+ios_base::sync_with_stdio(false)을 통해 동기화를 끊으면 C++ 표준 스트림이 독립적으로 IO 버퍼링을 하게 되어 많은 양의 입출력이 있을 경우 성능이 많이 좋아진다.
+
+알고리즘 문제 풀이에서는 예외 처리나 멀티스레드 작업이 필요하지 않기에 두 동기화를 끊고 성능을 높여 시간을 줄이는 게 더 효율적이다.
+🛑 **주의사항**
+- 동기화가 비활성화된 경우,
+- 버퍼가 분리되었기 때문에 cin과 C의 scanf, gets, getchar 등을 같이 사용하면 안되고,
+- cout와 C의 printf, puts, putchar 등과 같이 사용하면 안된다.
+
+### cin.tie(NULL)
+💡 cin.tie(NULL) : 입력과 출력 연결을 끊어준다 (cin.tie(nullptr) 또는 cin.tie(0) 도 가능)
+
+원래 cout와 cin, 입출력은 묶여있다.
+입력요청이 들어오면 그 전에 출력 작업이 있었을 경우(출력 버퍼에 내용이 있는 경우) 버퍼를 비워(flush) 출력하게 된다.
+
+이 경우, 입출력이 반복될 때, 일일이 버퍼를 지우느라 시간이 오래 걸린다. 따라서, cin.tie(NULL) 을 통해 입출력 묶음을 풀면 시간이 단축된다.
+🛑 **주의사항**
+- 입출력 순서를 보장받을 수 없다.
