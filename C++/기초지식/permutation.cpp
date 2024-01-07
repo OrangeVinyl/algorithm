@@ -16,7 +16,7 @@ int main() {
   return 0;
 }
 
-int secondWay() {
+void secondWay() {
   int a[] = {1, 2, 3};
   do {
     for (int i : a) cout << i << " ";
@@ -24,7 +24,7 @@ int secondWay() {
   } while (next_permutation(&a[0], &a[0] + 3));
 }
 
-int ifVector() {
+void ifVector() {
   vector<int> a = {1, 2, 3};
   do {
     for (int i : a) cout << i << ' ';
@@ -32,7 +32,7 @@ int ifVector() {
   } while (next_permutation(a.begin(), a.end()));
 }
 
-int ifNotSorted() {
+void ifNotSorted() {
   vector<int> a = {2, 1, 3};
   sort(a.begin(), a.end());
   do {
@@ -43,7 +43,7 @@ int ifNotSorted() {
 
 // 5개 중 2개를 뽑는 경우, slice 해서 뽑는 경우가 있다.
 
-int example {
+void example {
   vector<int> a = {2, 1, 3};
   sort(a.begin(), a.end());
   do {
@@ -52,4 +52,30 @@ int example {
     }
     cout << '\n';
   } while (next_permutation(a.begin(), a.end()));
+}
+
+
+/**
+ * @brief 재귀함수로 만드는 순열
+ * 굳이 외울 필요는 없지만 알아서 나쁠 건 없다.
+ * 
+ * @param n 
+ * @param r 
+ * @param depth 
+ */
+void makePermutation (int n, int r, int depth) {
+  cout << n << ' : ' << r << ' : ' << depth << '\n';
+  if ( r === depth) {
+    printV(v)
+    return;
+  }
+
+  for (int i = depth; i < n; i++) {
+    swap (v[i], v[depth])
+    makePermutation(n,r,depth + 1)
+    swap (v[i], v[depth])
+  }
+
+
+
 }
