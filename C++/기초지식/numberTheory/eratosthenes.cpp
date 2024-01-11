@@ -4,6 +4,7 @@ using namespace std;
 /**
  * @brief 에라토스테네스의 체
  * 소수가 아닌 값들에 대한 불리언 배열을 만들어 소수만을 걸러낼 수 있는 방법
+ * 시간복잡도: O(Nlog(logn))
  */
 
 const int max_n = 40;
