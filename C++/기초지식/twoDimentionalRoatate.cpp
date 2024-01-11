@@ -1,6 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+
+/**
+ * @brief 추가적으로 180도 뒤집는 경우, temp[i][j]=key[n−i−1][m−j−1] 이렇게 코드르 짤 수 있다.
+ * 
+ */
+
 const int n = 3;
 const int m = 4;
 
@@ -12,7 +18,7 @@ void rotate_left_90 (vector<vector<int>> &key) {
 
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
-            temp[i][j] = key[j][ m- i - 1];
+            temp[i][j] = key[j][m - i - 1];
         }
     }
     key.resize(m);
