@@ -49,3 +49,30 @@ auto it = mp.begin();에서 it는 이터레이터이며, *it은 이터레이터�
 따라서 범위 기반 for 루프를 사용할 때는 *it을 사용할 필요가 없으며, 일반적인 이터레이터를 사용할 때만 *it을 통해 역참조해야 합니다.
  * 
  */
+
+// map <int, int> mp;
+// map <string, string> mp2;
+// int checkZeroAtMap(void) {
+//     ios_base::sync_with_stdio(false);
+//     cin.tie(0);
+//     cout.tie(0);
+
+//     if(mp[1] == 0) {
+//         mp[1] = 2;
+//     }
+
+//     for (auto i : mp) cout << i.first << ' ' << i.second;
+
+//     return 0; 
+// }
+
+// int checkZeroAtMapAnother(void) {
+//     ios_base::sync_with_stdio(false);
+//     cin.tie(0);
+//     cout.tie(0);
+
+//     if(mp.find(1) == mp.end()) mp[1] == 2;
+//     for (auto i : mp) cout << i.first << ' ' << i.second;
+
+//     return 0;
+// }
