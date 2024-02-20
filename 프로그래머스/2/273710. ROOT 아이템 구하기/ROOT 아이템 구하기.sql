@@ -1,0 +1,1 @@
+select i.item_id, i.item_name from item_tree t join item_info i using(item_id) where parent_item_id is null
